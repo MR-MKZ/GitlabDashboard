@@ -1,17 +1,36 @@
-import { BrowserRouter, Routes, Route } from "react-router-dom";
+import { createBrowserRouter, RouterProvider } from "react-router-dom";
 import Dashboard from "../pages/Dashboard";
 import DashboardLayout from "../layouts/DashboardLayout";
 import PageNotFound from "../pages/errors/404";
+import Loading from "../components/Loading"
+
+const router = createBrowserRouter([
+  {
+    path: "/",
+    element: <DashboardLayout />,
+    children: [
+      {
+        index: true,
+        loader: () => {
+          return fetch("https://jsonplaceholder.typicode.com/photos").then(response => response)
+        },
+        element: <Dashboard />
+      },
+      {
+        path: "loading",
+        element: <Loading />
+      }
+    ]
+  },
+  {
+    path: "*",
+    element: <PageNotFound />
+  }
+])
+
 
 export default function AppRouter() {
   return (
-    <BrowserRouter>
-      <Routes>
-        <Route path="/" element={<DashboardLayout />}>
-          <Route index element={<Dashboard />} />
-        </Route>
-        <Route path="*" element={<PageNotFound />} />
-      </Routes>
-    </BrowserRouter>
+    <RouterProvider router={router} fallbackElement={<Loading />} />
   )
 }

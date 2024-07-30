@@ -15,6 +15,7 @@ export default {
       "black-secondary": "#252525",
       "gray-primary": "#232323",
       "gray-secondary": "#2B2D2F",
+      "gray-borders": "#353A3F",
       "blue-primary": "#0A77FF",
       "red-primary": "#E13A32",
       "green-primary": "#27B973"
