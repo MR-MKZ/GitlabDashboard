@@ -3,7 +3,7 @@ name: Deploy to GitHub Pages
 on:  
   push:  
     branches:  
-      - main  # Change to your default branch name if necessary  
+      - main  # Change this to your default branch name if necessary  
 
 jobs:  
   deploy:  
@@ -16,7 +16,7 @@ jobs:
     - name: Set up Node.js  
       uses: actions/setup-node@v2  
       with:  
-        node-version: '16' # Specify the Node.js version  
+        node-version: '20' # Specify the Node.js version  
 
     - name: Install dependencies  
       run: npm install  
@@ -25,9 +25,8 @@ jobs:
       run: npm run build  
 
     - name: Deploy to GitHub Pages  
-      uses: JamesIArmes/github-pages-deploy-action@release  
+      uses: peaceiris/actions-gh-pages@v3  
       with:  
-        branch: gh-pages  # The branch where the generated files should be pushed  
-        folder: dist      # The folder containing the build output  
-      env:  
-        GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+        github_token: ${{ secrets.GITHUB_TOKEN }}  
+        publish_dir: ./dist  # The folder containing the build output  
+        publish_branch: gh-pages  # The branch where the generated files should be pushed
