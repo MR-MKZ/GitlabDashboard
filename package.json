@@ -12,6 +12,7 @@
   "dependencies": {
     "@emotion/react": "^11.13.0",
     "@emotion/styled": "^11.13.0",
+    "@eslint/object-schema": "^2.1.4",
     "apexcharts": "^3.51.0",
     "autoprefixer": "^10.4.19",
     "flowbite-react": "^0.10.1",

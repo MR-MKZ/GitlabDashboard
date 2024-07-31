@@ -1,5 +1,9 @@
 // import { useLoaderData } from "react-router-dom"
-import NavBar from "../components/NavBar"
+// import NavBar from "../components/NavBar"
+import React from 'react';
+
+const NavBar = React.lazy(() => import('../components/NavBar'));
+
 // import ApexCharts from "apexcharts";
 // import { useEffect } from "react";
 

@@ -8,10 +8,14 @@ import {
 } from "react-icons/md";
 import { RxHamburgerMenu } from "react-icons/rx";
 import { IoMdClose } from "react-icons/io";
-import CustomLink from "./CustomLink"
+// import CustomLink from "./CustomLink"
 import { useLocation } from "react-router-dom";
 import { useState } from "react";
 import { motion } from "framer-motion";
+import React from "react";
+
+const CustomLink = React.lazy(() => import('./CustomLink'));
+
 
 export default function NavBar() {
 
@@ -53,7 +57,7 @@ export default function NavBar() {
         <>
             {/* Desktop sidebar */}
             <div className={`hidden lg:block`}>
-                <img src="./src/assets/images/gitlab-logo.png" className="w-14 mx-auto mt-2" alt="" />
+                <img src="./assets/images/gitlab-logo.png" className="w-14 mx-auto mt-2" alt="" />
                 <nav className="mt-5">
                     <ul className="flex flex-col gap-2">
                         <li>
@@ -83,12 +87,12 @@ export default function NavBar() {
             {/* Mobile / Tablet hamburger menu */}
             <div className="lg:hidden flex justify-between items-center h-full w-full p-2">
                 <div className="flex text-lg items-center">
-                    <img src="./src/assets/images/gitlab-logo.png" className="w-16" alt="" />
+                    <img src="./assets/images/gitlab-logo.png" className="w-16" alt="" />
                 </div>
                 <p className="text-white">Gitlab Dashboard</p>
                 <div onClick={
                     () => setshowBurgerMenu(true)
-                } className={`w-max h-full flex items-center justify-center aspect-square hover:bg-gray-borders transition-all duration-300 rounded-md`}>
+                } className={`w-max h-full flex flex-col gap-2 items-center justify-center aspect-square hover:bg-gray-borders transition-all duration-300 rounded-md`}>
                     <RxHamburgerMenu size={30} color="white" />
                 </div>
             </div>
@@ -100,7 +104,7 @@ export default function NavBar() {
 
             >
                 <div className="mx-auto w-full flex text-lg items-center justify-center">
-                    <img src="./src/assets/images/gitlab-logo.png" className="w-20" alt="Gitlab Dashboard logo" />
+                    <img src="./assets/images/gitlab-logo.png" className="w-20" alt="Gitlab Dashboard logo" />
                     <div onClick={() => setshowBurgerMenu(false)} className={`w-max p-2 absolute right-4 top-8 flex items-center justify-center aspect-square hover:bg-gray-borders transition-all duration-300 rounded-md`}>
                         <IoMdClose size={35} color="white" />
                     </div>
