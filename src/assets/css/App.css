@@ -2,10 +2,18 @@
 @tailwind components;
 @tailwind utilities;
 
+body {
+    font-family: 'Ubuntu';
+}
+
 .dir-rtl {
     direction: rtl;
 }
 
 .dir-ltr {
     direction: ltr;
+}
+
+.apexcharts-legend-text {
+    color: white!important;
 }

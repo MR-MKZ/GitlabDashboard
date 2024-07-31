@@ -11,9 +11,6 @@ const router = createBrowserRouter([
     children: [
       {
         index: true,
-        loader: () => {
-          return fetch("https://jsonplaceholder.typicode.com/photos").then(response => response)
-        },
         element: <Dashboard />
       },
       {

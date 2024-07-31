@@ -1,10 +1,9 @@
-import { useLoaderData } from "react-router-dom"
+// import { useLoaderData } from "react-router-dom"
 import NavBar from "../components/NavBar"
+// import ApexCharts from "apexcharts";
+// import { useEffect } from "react";
 
 export default function Dashboard() {
-  let data = useLoaderData()
-
-  console.log(data);
 
   let desktopMainContainerStyle = " lg:grid lg:grid-cols-[1fr_75px] lg:overflow-hidden dir-rtl lg:outline-gray-borders lg:outline-2 lg:outline lg:rounded-xl lg:pt-0"
   let desktopNavBarContainerStyle = "lg:w-[75px] lg:h-[calc(100vh-1rem)] lg:rounded-none lg:rounded-tl-xl lg:rounded-bl-xl dir-ltr lg:left-0"
