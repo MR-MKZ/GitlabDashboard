@@ -1,7 +1,6 @@
 import { motion } from "framer-motion"
 import { Outlet } from "react-router-dom";
 
-// eslint-disable-next-line react/prop-types
 const DashboardLayout = () => {
   return (
     <motion.div

@@ -1,4 +1,5 @@
 import { Spinner } from "flowbite-react"
+import "../styles/App.css"
 
 export default function Loading() {
   return (

@@ -57,11 +57,11 @@ export default function NavBar() {
         <>
             {/* Desktop sidebar */}
             <div className={`hidden lg:block`}>
-                <img src="./assets/images/gitlab-logo.png" className="w-14 mx-auto mt-2" alt="" />
+                <img src="./assets/images/gitlab-logo.png" className="w-14 mx-auto mt-2" alt="Gitlab Logo" />
                 <nav className="mt-5">
                     <ul className="flex flex-col gap-2">
                         <li>
-                            <CustomLink to={"/"} icon={<MdOutlineSpaceDashboard color={currentNavTab("/")} size={25} />} tooltipContent={"Dashboard"} tooltipPosition={"right"} />
+                            <CustomLink to={"/"} icon={<MdOutlineSpaceDashboard color={currentNavTab("/")} size={25} />} tooltipContent={"DashboardPage"} tooltipPosition={"right"} />
                         </li>
                         <li>
                             <CustomLink to={"/inbox"} icon={<MdOutlineEmail color={currentNavTab("/inbox")} size={25} />} disabled={true} tooltipContent={"Inbox"} tooltipPosition={"right"} />
@@ -89,7 +89,7 @@ export default function NavBar() {
                 <div className="flex text-lg items-center">
                     <img src="./assets/images/gitlab-logo.png" className="w-16" alt="" />
                 </div>
-                <p className="text-white">Gitlab Dashboard</p>
+                <p className="text-white">Gitlab DashboardPage</p>
                 <div onClick={
                     () => setshowBurgerMenu(true)
                 } className={`w-max h-full flex flex-col gap-2 items-center justify-center aspect-square hover:bg-gray-borders transition-all duration-300 rounded-md`}>
@@ -104,7 +104,7 @@ export default function NavBar() {
 
             >
                 <div className="mx-auto w-full flex text-lg items-center justify-center">
-                    <img src="./assets/images/gitlab-logo.png" className="w-20" alt="Gitlab Dashboard logo" />
+                    <img src="./assets/images/gitlab-logo.png" className="w-20" alt="Gitlab DashboardPage logo" />
                     <div onClick={() => setshowBurgerMenu(false)} className={`w-max p-2 absolute right-4 top-8 flex items-center justify-center aspect-square hover:bg-gray-borders transition-all duration-300 rounded-md`}>
                         <IoMdClose size={35} color="white" />
                     </div>
@@ -114,7 +114,7 @@ export default function NavBar() {
                         variants={burgerItem}
                         className="w-full"
                     >
-                        <CustomLink to={"/"} icon={<MdOutlineSpaceDashboard color={currentNavTab("/")} size={25} />} text={"Dashboard"} tooltipActive={false} />
+                        <CustomLink to={"/"} icon={<MdOutlineSpaceDashboard color={currentNavTab("/")} size={25} />} text={"DashboardPage"} tooltipActive={false} />
                     </motion.li>
                     <motion.li
                         variants={burgerItem}

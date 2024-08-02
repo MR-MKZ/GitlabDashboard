@@ -3,7 +3,7 @@ import { Link } from 'react-router-dom';
 import { Tooltip } from 'flowbite-react';
 
 
-const CustomLink = ({ to, icon, text, disabled, tooltipContent, tooltipPosition, tooltipActive = true }) => {
+export default function CustomLink({ to, icon, text, disabled, tooltipContent, tooltipPosition, tooltipActive = true }) {
 
     const isDesktop = () => window.innerWidth >= 1024;
 
@@ -34,5 +34,3 @@ CustomLink.propTypes = {
     tooltipPosition: PropTypes.string,
     tooltipActive: PropTypes.bool
 };
-
-export default CustomLink;

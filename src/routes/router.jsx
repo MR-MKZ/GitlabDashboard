@@ -1,8 +1,10 @@
-import { createBrowserRouter, RouterProvider } from "react-router-dom";
-import Dashboard from "../pages/Dashboard";
+import {createBrowserRouter, redirect, RouterProvider} from "react-router-dom";
+import DashboardPage from "../pages/DashboardPage.jsx";
 import DashboardLayout from "../layouts/DashboardLayout";
 import PageNotFound from "../pages/errors/404";
 import Loading from "../components/Loading"
+import LoginPage from "../pages/auth/LoginPage.jsx";
+import RegisterPage from "../pages/auth/RegisterPage.jsx";
 
 const router = createBrowserRouter([
   {
@@ -11,11 +13,24 @@ const router = createBrowserRouter([
     children: [
       {
         index: true,
-        element: <Dashboard />
+        element: <DashboardPage />
+      }
+    ]
+  },
+  {
+    path: "/auth",
+    children: [
+      {
+        index: true,
+        loader: async ()  => redirect("/auth/login")
       },
       {
-        path: "loading",
-        element: <Loading />
+        path: "login",
+        element: <LoginPage />
+      },
+      {
+        path: "signup",
+        element: <RegisterPage />
       }
     ]
   },
