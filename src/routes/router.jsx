@@ -5,6 +5,7 @@ import PageNotFound from "../pages/errors/404";
 import Loading from "../components/Loading"
 import LoginPage from "../pages/auth/LoginPage.jsx";
 import RegisterPage from "../pages/auth/RegisterPage.jsx";
+import Cookies from "js-cookie";
 
 const router = createBrowserRouter([
   {
@@ -31,6 +32,13 @@ const router = createBrowserRouter([
       {
         path: "signup",
         element: <RegisterPage />
+      },
+      {
+        path: "logout",
+        loader: async () => {
+          Cookies.remove("token");
+          return redirect("/auth/login")
+        }
       }
     ]
   },

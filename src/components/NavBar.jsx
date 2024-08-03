@@ -1,14 +1,13 @@
 import {
     MdOutlineSpaceDashboard,
-    MdOutlineEmail,
-    MdOutlineNotifications,
-    MdOutlineCalendarToday,
+    MdOutlineLogout,
     MdOutlineSettings,
     MdOutlineInsertChart,
 } from "react-icons/md";
+import { GoIssueOpened } from "react-icons/go";
+import { BiTask } from "react-icons/bi";
 import { RxHamburgerMenu } from "react-icons/rx";
 import { IoMdClose } from "react-icons/io";
-// import CustomLink from "./CustomLink"
 import { useLocation } from "react-router-dom";
 import { useState } from "react";
 import { motion } from "framer-motion";
@@ -61,17 +60,17 @@ export default function NavBar() {
                 <nav className="mt-5">
                     <ul className="flex flex-col gap-2">
                         <li>
-                            <CustomLink to={"/"} icon={<MdOutlineSpaceDashboard color={currentNavTab("/")} size={25} />} tooltipContent={"DashboardPage"} tooltipPosition={"right"} />
+                            <CustomLink to={"/"} icon={<MdOutlineSpaceDashboard color={currentNavTab("/")} size={25} />} tooltipContent={"Dashboard"} tooltipPosition={"right"} />
                         </li>
                         <li>
-                            <CustomLink to={"/inbox"} icon={<MdOutlineEmail color={currentNavTab("/inbox")} size={25} />} disabled={true} tooltipContent={"Inbox"} tooltipPosition={"right"} />
+                            <CustomLink to={"/tasks"} icon={<BiTask color={currentNavTab("/tasks")} size={25} />} disabled={true} tooltipContent={"Tasks"} tooltipPosition={"right"} />
                         </li>
                         <li>
-                            <CustomLink to={"/notifications"} icon={<MdOutlineNotifications color={currentNavTab("/notifications")} size={25} />} disabled={true} tooltipContent={"Notifications"} tooltipPosition={"right"} />
+                            <CustomLink to={"/issues"} icon={<GoIssueOpened color={currentNavTab("/issues")} size={25} />} disabled={true} tooltipContent={"Issues"} tooltipPosition={"right"} />
                         </li>
-                        <li>
+                        {/* <li>
                             <CustomLink to={"/schedule"} icon={<MdOutlineCalendarToday color={currentNavTab("/schedule")} size={25} />} disabled={true} tooltipContent={"Schedule"} tooltipPosition={"right"} />
-                        </li>
+                        </li> */}
                     </ul>
                 </nav>
             </div>
@@ -82,6 +81,9 @@ export default function NavBar() {
                 </div>
                 <div>
                     <CustomLink to={"/settings"} icon={<MdOutlineSettings color={currentNavTab("/settings")} size={25} />} disabled={true} tooltipContent={"Settings"} tooltipPosition={"right"} />
+                </div>
+                <div>
+                    <CustomLink to={"/auth/logout"} icon={<MdOutlineLogout color={currentNavTab("/auth/logout")} size={25} />} disabled={false} tooltipContent={"Logout"} tooltipPosition={"right"} />
                 </div>
             </div>
             {/* Mobile / Tablet hamburger menu */}
@@ -120,20 +122,26 @@ export default function NavBar() {
                         variants={burgerItem}
                         className="w-full"
                     >
-                        <CustomLink to={"/inbox"} icon={<MdOutlineEmail color={currentNavTab("/inbox")} size={25} />} disabled={true} text={"Inbox"} tooltipActive={false} />
+                        <CustomLink to={"/tasks"} icon={<BiTask color={currentNavTab("/tasks")} size={25} />} disabled={true} text={"Tasks"} tooltipActive={false} />
                     </motion.li>
                     <motion.li
                         variants={burgerItem}
                         className="w-full"
                     >
-                        <CustomLink to={"/notifications"} icon={<MdOutlineNotifications color={currentNavTab("/notifications")} size={25} />} disabled={true} text={"Notifications"} tooltipActive={false} />
+                        <CustomLink to={"/issues"} icon={<GoIssueOpened color={currentNavTab("/issues")} size={25} />} disabled={true} text={"Issues"} tooltipActive={false} />
                     </motion.li>
                     <motion.li
+                        variants={burgerItem}
+                        className="w-full"
+                    >
+                        <CustomLink to={"/auth/logout"} icon={<MdOutlineLogout color={currentNavTab("/auth/logout")} size={25} />} disabled={false} text={"Logout"} tooltipActive={false} />
+                    </motion.li>
+                    {/* <motion.li
                         variants={burgerItem}
                         className="w-full"
                     >
                         <CustomLink to={"/schedule"} icon={<MdOutlineCalendarToday color={currentNavTab("/schedule")} size={25} />} disabled={true} text={"Schedule"} tooltipActive={false} />
-                    </motion.li>
+                    </motion.li> */}
                 </ul>
             </motion.div>
         </>
