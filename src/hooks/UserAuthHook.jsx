@@ -1,17 +1,15 @@
 import { useMutation, useQuery } from "@tanstack/react-query";
 import { createUser, loginUser, checkLogin } from "../api/index.js";
-import { redirect, useNavigate } from "react-router-dom";
+import { useNavigate } from "react-router-dom";
 import { useEffect } from "react";
 import Cookies from "js-cookie";
 export const useLoginUser = () => {
-    const navigate = useNavigate();
-
     const { mutate, isPending, isError, error, isSuccess } = useMutation({
         mutationFn: ({ email, password }) => loginUser({ email, password }),
         onSuccess: (data) => {
-            Cookies.set("token", data.token)
+            Cookies.set("token", data.token, { expires: 1 })
             setTimeout(() => {
-                navigate('/');
+                window.location.href = "/"
             }, 2000);
         }
     })
@@ -23,9 +21,9 @@ export const useRegisterUser = () => {
     const { mutate, isPending, isError, error, isSuccess } = useMutation({
         mutationFn: ({ username, email, password, role }) => createUser({ username, email, password, role }),
         onSuccess: (data) => {
-            Cookies.set("token", data.token)
+            Cookies.set("token", data.token, { expires: 1 })
             setTimeout(() => {
-                redirect("/")
+                window.location.href = "/"
             }, 2000)
         }
     })
@@ -34,7 +32,7 @@ export const useRegisterUser = () => {
 }
 
 export const useLoginCheck = () => {
-    const { data: userData, isError, isLoading } = useQuery({
+    const { data: userData, isError, isLoading, isSuccess } = useQuery({
         queryFn: checkLogin,
         queryKey: ["user"],
         retry: 0
@@ -45,8 +43,8 @@ export const useLoginCheck = () => {
     useEffect(() => {
         if (isError) {
             navigate('/auth/login');
-        } 
-    }, [isError, isLoading, navigate])
+        }
+    }, [isError, isLoading, navigate, isSuccess])
 
-    return { userData, isDataLoading: isLoading }
+    return { userData, isDataLoading: isLoading, isUserFetchSuccess: isSuccess }
 }

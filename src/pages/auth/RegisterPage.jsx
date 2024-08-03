@@ -4,12 +4,21 @@ import Input from "../../components/Input.jsx";
 import { Button, Spinner } from "flowbite-react";
 import { useFormik } from "formik";
 import * as yup from "yup";
-import { useRegisterUser } from "../../hooks/UserAuthHook.jsx";
+import {useRegisterUser} from "../../hooks/UserAuthHook.jsx";
+import {useEffect} from "react";
+import {toast} from "react-toastify";
 
 export default function RegisterPage() {
 
-    // const [password, setPassword] = useState()
-    const { register, isRegisterPending } = useRegisterUser();
+    const { register, isRegisterPending, isRegisterError, isRegisterSuccess } = useRegisterUser();
+
+    useEffect(() => {
+        if (isRegisterSuccess) {
+            toast.success('Account created successfully')
+        } else if (isRegisterError) {
+            toast.error("Account creation failed")
+        }
+    }, [isRegisterSuccess, isRegisterError]);
 
     const SignupSchema = yup.object().shape({
         email: yup.string().required("Email is required"),

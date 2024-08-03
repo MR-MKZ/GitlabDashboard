@@ -1,23 +1,24 @@
-import { Link, useNavigate } from "react-router-dom";
+import { Link } from "react-router-dom";
 import { MdOutlineEmail, MdOutlineKey } from "react-icons/md";
 import Input from "../../components/Input.jsx";
 import { Button, Spinner } from "flowbite-react";
 import { useFormik } from "formik";
 import * as yup from "yup";
-import { useLoginUser } from "../../hooks/UserAuthHook.jsx";
-import Cookies from "js-cookie"
+import {useLoginUser} from "../../hooks/UserAuthHook.jsx";
 import { useEffect } from "react";
+import {toast} from "react-toastify";
 
 export default function LoginPage() {
 
-    // const navigate = useNavigate();
+    const { login, isLoginPending, isLoginError, isLoginSuccess } = useLoginUser();
 
-    const { login, isLoginPending, isLoginError, isLoginSuccess, loginError } = useLoginUser();
-
-    // useEffect(() => {
-        
-    //     Cookies.set("test",)
-    // }, []);
+    useEffect(() => {
+        if (isLoginSuccess) {
+            toast.success('Logged in successfully')
+        } else if (isLoginError) {
+            toast.error("Login failed")
+        }
+    }, [isLoginSuccess, isLoginError]);
 
     const LoginSchema = yup.object().shape({
         email: yup.string().required("Email is required"),

@@ -4,6 +4,8 @@ import React from "react";
 import { Suspense } from "react";
 import Loading from "./components/Loading.jsx";
 import { QueryClient, QueryClientProvider } from "@tanstack/react-query";
+import "react-toastify/dist/ReactToastify.css";
+import {ToastContainer} from "react-toastify";
 
 const AppRouter = React.lazy(() => import('./routes/router'));
 
@@ -15,6 +17,19 @@ export default function App() {
     <Suspense fallback={<Loading />}>
       <QueryClientProvider client={queryClient}>
           <AppRouter />
+          <ToastContainer
+              position="top-right"
+              autoClose={2000}
+              hideProgressBar={false}
+              newestOnTop={false}
+              closeOnClick
+              rtl={false}
+              pauseOnFocusLoss
+              draggable
+              pauseOnHover
+              theme="dark"
+              transition: Bounce
+          />
       </QueryClientProvider>
     </Suspense>
   );
