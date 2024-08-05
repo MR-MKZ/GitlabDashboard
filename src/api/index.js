@@ -76,3 +76,15 @@ export const fetchTasksStatus = async () => {
 
   return response.data
 }
+
+export const fetchIssueList = async () => {
+  const response = await axios.get(`${api_url}/api/client/issueList`, request_config);
+
+  return response.data
+}
+
+export const fetchTopUsers = async () => {
+  const response = await axios.get(`${api_url}/api/client/topUsers`, request_config);
+
+  return response.data
+}

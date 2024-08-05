@@ -6,12 +6,12 @@
  */
 export function calcPercent(mode, num1, num2) {
     let result;
-    if (mode == "ntp") {
+    if (mode === "ntp") {
         result = (num1 / num2) * 100
     } else {
         result = (num1 / 100) * num2 
     }
-    return Math.round(result);
+    return isNaN(result) ? 0 : result;
 }
 
 export function sum(numbers) {
@@ -21,5 +21,5 @@ export function sum(numbers) {
             sum += num
         }
     })
-    return sum
+    return isNaN(sum) ? 0 : sum;
 }
