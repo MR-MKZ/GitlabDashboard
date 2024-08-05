@@ -3,6 +3,7 @@ import { createUser, loginUser, checkLogin } from "../api/index.js";
 import { useNavigate } from "react-router-dom";
 import { useEffect } from "react";
 import Cookies from "js-cookie";
+
 export const useLoginUser = () => {
     const { mutate, isPending, isError, error, isSuccess } = useMutation({
         mutationFn: ({ email, password }) => loginUser({ email, password }),

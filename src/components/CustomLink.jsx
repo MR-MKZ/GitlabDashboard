@@ -22,7 +22,7 @@ export default function CustomLink({ to, icon, text, disabled, tooltipContent, t
             )}
         </Link>
     );
-};
+}
 
 
 CustomLink.propTypes = {

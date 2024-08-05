@@ -30,7 +30,12 @@ const router = createBrowserRouter([
         path: "/auth",
         loader: async () => {
             try {
-                await checkLogin()
+                let token = Cookies.get("token")
+                if (token) {
+                    await checkLogin()
+                } else {
+                    return null
+                }
             } catch (e) {
                 return null
             }

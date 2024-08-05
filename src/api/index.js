@@ -11,7 +11,7 @@ const request_config = {
   credentials: 'include',
   headers: {
     "Content-Type": "application/json",
-    "token": token
+    "Authorization": token
   }
 }
 
@@ -55,6 +55,24 @@ export const loginUser = async ({ email, password }) => {
 
 export const checkLogin = async () => {
   const response = await axios.get(`${api_url}/api/auth/user`, request_config)
+
+  return response.data
+}
+
+export const fetchDashboardOverviewData = async () => {
+  const response = await axios.get(`${api_url}/api/client/statistics`, request_config);
+
+  return response.data
+}
+
+export const fetchIssuesStatus = async () => {
+  const response = await axios.get(`${api_url}/api/client/issuesStatistics`, request_config);
+
+  return response.data
+}
+
+export const fetchTasksStatus = async () => {
+  const response = await axios.get(`${api_url}/api/client/tasksStatistics`, request_config);
 
   return response.data
 }
