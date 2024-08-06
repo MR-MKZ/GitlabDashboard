@@ -63,9 +63,9 @@ export default function IssuesPieChartComponent() {
         <PieChart
             chartTitle={"Issues Status"}
             chartValTitle1={"Closed issues"}
-            chartVal1={!issuesStatusIsLoading && issuesStatusIsSuccess ? `${calcPercent("ntp", issuesStatusData["closedIssuesCount"], issuesTotalCount)}%` : "0%"}
+            chartVal1={!issuesStatusIsLoading && issuesStatusIsSuccess && issuesStatusData ? `${calcPercent("ntp", issuesStatusData["closedIssuesCount"], issuesTotalCount)}%` : "0%"}
             chartValTitle2={"Open issues"}
-            chartVal2={!issuesStatusIsLoading && issuesStatusIsSuccess ? `${calcPercent("ntp", issuesStatusData["openIssuesCount"], issuesTotalCount)}%` : "0%"}
+            chartVal2={!issuesStatusIsLoading && issuesStatusIsSuccess && issuesStatusData ? `${calcPercent("ntp", issuesStatusData["openIssuesCount"], issuesTotalCount)}%` : "0%"}
             chartId={"tasksPieChart"}
             chartRef={issuesPieChartRef}
         />

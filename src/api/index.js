@@ -88,3 +88,21 @@ export const fetchTopUsers = async () => {
 
   return response.data
 }
+
+export const fetchTasksCountByDate = async () => {
+  const response = await axios.get(`${api_url}/api/client/tasksCountByDate`, request_config)
+
+  return response.data
+}
+
+export const fetchClosedIssuesPerWeek = async () => {
+  const response = await axios.get(`${api_url}/api/client/closedIssuesPerWeek`, request_config)
+
+  return response.data
+}
+
+export const fetchUsersData = async () => {
+  const response = await axios.get(`${api_url}/api/client/usersData `, request_config)
+
+  return response.data
+}

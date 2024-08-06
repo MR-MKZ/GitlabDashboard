@@ -5,7 +5,8 @@ import { fetchIssuesStatus } from "../api";
 export default function useFetchIssuesStatus() {
     const { data, isLoading, isError, isSuccess, error } = useQuery({
         queryFn: fetchIssuesStatus,
-        queryKey: ['issuesStatus']
+        queryKey: ['issuesStatus'],
+        refetchInterval: 60 * 1000
     })
 
     return {

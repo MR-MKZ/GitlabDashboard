@@ -5,7 +5,8 @@ import { fetchDashboardOverviewData } from "../api";
 export default function useFetchDashboardOverview() {
     const { data, isLoading, isError, isSuccess, error } = useQuery({
         queryFn: fetchDashboardOverviewData,
-        queryKey: ['dashboardOverviewCard']
+        queryKey: ['dashboardOverviewCard'],
+        refetchInterval: 60 * 1000
     })
 
     return {
