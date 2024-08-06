@@ -36,7 +36,8 @@ export const useLoginCheck = () => {
     const { data: userData, isError, isLoading, isSuccess } = useQuery({
         queryFn: checkLogin,
         queryKey: ["user"],
-        retry: 0
+        retry: 0,
+        refetchInterval: 60 * 1000
     })
 
     const navigate = useNavigate();

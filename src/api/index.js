@@ -106,3 +106,9 @@ export const fetchUsersData = async () => {
 
   return response.data
 }
+
+export const fetchTasksList = async () => {
+  const response = await axios.get(`${api_url}/api/client/tasksList`, request_config)
+
+  return response.data
+}
