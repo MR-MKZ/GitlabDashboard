@@ -19,7 +19,7 @@ export default function ContributorsListComponent() {
                                 <img src={user.avatar_url} alt={user.name} className="w-12 h-12 rounded-full" />
                                 <div className="flex-grow">
                                     <div className="text-white font-semibold">{user.name}</div>
-                                    <div className="text-gray-400 text-sm">{user.username}</div>
+                                    <div className="text-gray-400 text-sm">@{user.username}</div>
                                 </div>
                             </div>
                             <Badge color={"success"} size={"sm"} icon={HiCheck} className={"mx-auto md:mx-0"}>

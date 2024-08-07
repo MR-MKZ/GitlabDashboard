@@ -21,10 +21,9 @@ export const useLoginUser = () => {
 export const useRegisterUser = () => {
     const { mutate, isPending, isError, error, isSuccess } = useMutation({
         mutationFn: ({ username, email, password, role }) => createUser({ username, email, password, role }),
-        onSuccess: (data) => {
-            Cookies.set("token", data.token, { expires: 1 })
+        onSuccess: () => {
             setTimeout(() => {
-                window.location.href = "/"
+                window.location.href = "/auth/login"
             }, 2000)
         }
     })
@@ -44,6 +43,7 @@ export const useLoginCheck = () => {
 
     useEffect(() => {
         if (isError) {
+            Cookies.remove("token")
             navigate('/auth/login');
         }
     }, [isError, isLoading, navigate, isSuccess])

@@ -4,13 +4,6 @@ import { useState, useEffect } from "react";
 import { getWeekRange } from "../utils/helpers";
 
 export default function ClosedIssuesWeeklyChartComponent() {
-    // const data = [
-    //     { week: 'Sep 30 - Oct 6', closedIssues: 5 },
-    //     { week: 'Oct 7 - Oct 13', closedIssues: 8 },
-    //     { week: 'Oct 14 - Oct 20', closedIssues: 12 },
-    //     { week: 'Oct 21 - Oct 27', closedIssues: 7 },
-    // ];
-
     const [data, setData] = useState({
         labels: [],
         datasets: []
@@ -18,7 +11,6 @@ export default function ClosedIssuesWeeklyChartComponent() {
 
     const { closedIssuesData, closedIssuesIsLoading, closedIssuesIsError, closedIssuesIsSuccess } = useFetchClosedIssuesPerWeek();
 
-    // const chartData = 
 
     useEffect(() => {
         if (!closedIssuesIsLoading && closedIssuesIsSuccess) {
@@ -40,8 +32,6 @@ export default function ClosedIssuesWeeklyChartComponent() {
                     },
                 ],
             })
-
-            // console.log(closedIssues);
         }
     }, [closedIssuesData, closedIssuesIsLoading, closedIssuesIsSuccess]);
 
@@ -62,7 +52,8 @@ export default function ClosedIssuesWeeklyChartComponent() {
                     color: 'rgba(255, 255, 255, 0.1)'
                 },
                 ticks: {
-                    color: 'white'
+                    color: 'white',
+                    precision: 0
                 },
             },
         },
@@ -102,6 +93,5 @@ export default function ClosedIssuesWeeklyChartComponent() {
                     )}
             </div>
         </div>
-    )
-        ;
+    );
 }

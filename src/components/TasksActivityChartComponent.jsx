@@ -3,14 +3,6 @@ import useFetchTasksCountByDate from '../hooks/useFetchTasksCountByDate';
 import { useState, useEffect } from 'react';
 
 export default function TasksActivityChartComponent() {
-    // const data = [
-    //     { date: '2023-10-01', finishedTasks: 5 },
-    //     { date: '2023-10-02', finishedTasks: 8 },
-    //     { date: '2023-10-03', finishedTasks: 3 },
-    //     { date: '2023-10-04', finishedTasks: 6 },
-    //     { date: '2023-10-05', finishedTasks: 10 },
-    // ];
-
     const [data, setData] = useState({
         labels: [],
         datasets: []
@@ -59,7 +51,8 @@ export default function TasksActivityChartComponent() {
                     color: 'rgba(255, 255, 255, 0.1)'
                 },
                 ticks: {
-                    color: 'white'
+                    color: 'white',
+                    precision: 0
                 },
             },
         },
@@ -92,10 +85,10 @@ export default function TasksActivityChartComponent() {
                 <h1 className={"text-2xl"}>Recent finished tasks</h1>
                 {!tasksCountIsLoading && tasksCountIsError && !tasksCountData || data.labels.length === 0 ? (
                     <p className={"w-full h-[270px] flex items-center justify-center"}>
-                       Sorry, but there is nothing to show yet!
-                   </p>
+                        Sorry, but there is nothing to show yet!
+                    </p>
                 ) : (
-                    <Line data={data} options={options}/>
+                    <Line data={data} options={options} />
                 )}
             </div>
         </div>

@@ -5,9 +5,10 @@ const DashboardLayout = ({ isDataLoading, isUserFetchSuccess, children }) => {
   let desktopMainContainerStyle = " lg:grid lg:grid-cols-[1fr_75px] lg:overflow-hidden dir-rtl lg:outline-gray-borders lg:outline-2 lg:outline lg:rounded-xl lg:pt-0"
   let desktopNavBarContainerStyle = "lg:w-[75px] lg:h-[calc(100vh-1rem)] lg:rounded-none lg:rounded-tl-xl lg:rounded-bl-xl dir-ltr lg:left-0"
   let desktopContentContainerStyle = "lg:h-[calc(100vh-1rem)] lg:overflow-y-auto lg:p-7 lg:rounded-none lg:rounded-tr-xl lg:rounded-br-xl dir-ltr lg:border-l-2 lg:border-l-gray-borders lg:mt-0"
+  // ${isDataLoading || !isUserFetchSuccess && "invisible"}
   return (
     <div
-      className={`${isDataLoading || !isUserFetchSuccess && "invisible"} relative sm:overflow-x-hidden m-2 pt-[80px] ${desktopMainContainerStyle}`}>
+      className={` relative sm:overflow-x-hidden m-2 pt-[80px] ${desktopMainContainerStyle}`}>
       {/* left nav bar */}
       <div
         className={`bg-gray-primary w-full h-[70px] box-border top-0 rounded-lg absolute ${desktopNavBarContainerStyle}`}>
