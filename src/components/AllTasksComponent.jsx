@@ -4,9 +4,6 @@ import useFetchTasksList from "../hooks/useFetchTasksList";
 
 export default function AllTasksComponent() {
 
-    // const { usersData, usersDataIsLoading, usersDataIsSuccess } = useFetchUsersData();
-
-
     const { tasksListData, tasksListIsLoading, tasksListIsSuccess } = useFetchTasksList()
 
     return (
@@ -33,14 +30,6 @@ export default function AllTasksComponent() {
                                 </>
                             ) : (
                                 <>
-                                    {/* <div className="flex gap-2 items-center">
-                                        <Badge color={"success"} size={"sm"} className={"mx-auto md:mx-0"}>
-                                            Time Spent: {task.timeSpent} 12h
-                                        </Badge>
-                                        <Badge color={"success"} size={"sm"} icon={HiCheck} className={"mx-auto md:mx-0"}>
-                                            {task.tasksComplete} Done
-                                        </Badge>
-                                    </div> */}
                                     <Badge color={"success"} size={"sm"} icon={HiCheck} className={"mx-auto md:mx-0"}>
                                         {task.tasksComplete} Done
                                     </Badge>

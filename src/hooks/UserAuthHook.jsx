@@ -31,6 +31,10 @@ export const useRegisterUser = () => {
     return { register: mutate, isRegisterPending: isPending, isRegisterError: isError, registerError: error, isRegisterSuccess: isSuccess }
 }
 
+/**
+ * check user login status
+ * @returns {object} user data, isLoading and isUserFetchSuccess data
+ */
 export const useLoginCheck = () => {
     const { data: userData, isError, isLoading, isSuccess } = useQuery({
         queryFn: checkLogin,

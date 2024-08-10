@@ -10,14 +10,6 @@ import AllTasksComponent from "../components/AllTasksComponent";
 export default function TasksPage() {
     const { isDataLoading, isUserFetchSuccess } = useLoginCheck();
 
-    // const navigate = useNavigate();
-
-    // useEffect(() => {
-    //     if (!isDataLoading && isUserFetchSuccess && userData.role.toLowerCase() == "user") {
-    //         navigate("/")
-    //     }
-    // }, [isDataLoading, isUserFetchSuccess, navigate, userData]);
-
     if (isDataLoading) {
         return <Loading />
     }
