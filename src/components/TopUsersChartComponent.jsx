@@ -13,12 +13,11 @@ export default function TopUsersChartComponent() {
 
     useEffect(() => {
         if (!topUsersIsLoading && topUsersIsSuccess) {
-            console.log(topUsersData)
             let labels = []
             let tasksCompleted = []
             for (const user of Object.keys(topUsersData)) {
                 labels.push(topUsersData[user].username)
-                tasksCompleted.push(topUsersData[user].tasksCompleted)
+                tasksCompleted.push(topUsersData[user].taskCompleted)
             }
             setData({
                 labels: labels,
@@ -86,7 +85,7 @@ export default function TopUsersChartComponent() {
             className={"bg-gray-primary items-center lg:items-stretch border border-gray-borders rounded-lg p-5 gap-3 flex flex-col lg:flex-row lg:justify-between"}>
             <div className={"flex items-center lg:items-start flex-col w-full gap-6 text-[11pt] sm:text-[14pt]"}>
                 <h1 className={"text-2xl"}>Top Users</h1>
-                {!topUsersIsLoading && topUsersIsError || data.labels.length === 0 ? (
+                {!topUsersIsLoading && topUsersIsError && !topUsersData || data.labels.length === 0 ? (
                     <p className={"w-full h-[270px] flex items-center justify-center"}>
                         Sorry, but there is nothing to show yet!
                     </p>

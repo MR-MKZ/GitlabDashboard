@@ -65,9 +65,9 @@ export default function TasksPieChartComponent() {
         <PieChart
             chartTitle={"Tasks Status"}
             chartValTitle1={"Finished tasks"}
-            chartVal1={!tasksStatusIsLoading && tasksStatusIsSuccess ? `${calcPercent("ntp", tasksStatusData["closedTasksCount"], tasksTotalCount)}%` : "0%"}
+            chartVal1={!tasksStatusIsLoading && tasksStatusIsSuccess && tasksStatusData ? `${calcPercent("ntp", tasksStatusData["closedTasksCount"], tasksTotalCount)}%` : "0%"}
             chartValTitle2={"Active tasks"}
-            chartVal2={!tasksStatusIsLoading && tasksStatusIsSuccess ? `${calcPercent("ntp", tasksStatusData["openTasksCount"], tasksTotalCount)}%` : "0%"}
+            chartVal2={!tasksStatusIsLoading && tasksStatusIsSuccess && tasksStatusData ? `${calcPercent("ntp", tasksStatusData["openTasksCount"], tasksTotalCount)}%` : "0%"}
             chartId={"tasksPieChart"}
             chartRef={tasksPieChartRef}
         />

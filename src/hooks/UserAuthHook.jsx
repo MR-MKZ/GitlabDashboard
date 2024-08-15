@@ -21,10 +21,9 @@ export const useLoginUser = () => {
 export const useRegisterUser = () => {
     const { mutate, isPending, isError, error, isSuccess } = useMutation({
         mutationFn: ({ username, email, password, role }) => createUser({ username, email, password, role }),
-        onSuccess: (data) => {
-            Cookies.set("token", data.token, { expires: 1 })
+        onSuccess: () => {
             setTimeout(() => {
-                window.location.href = "/"
+                window.location.href = "/auth/login"
             }, 2000)
         }
     })
@@ -32,17 +31,23 @@ export const useRegisterUser = () => {
     return { register: mutate, isRegisterPending: isPending, isRegisterError: isError, registerError: error, isRegisterSuccess: isSuccess }
 }
 
+/**
+ * check user login status
+ * @returns {object} user data, isLoading and isUserFetchSuccess data
+ */
 export const useLoginCheck = () => {
     const { data: userData, isError, isLoading, isSuccess } = useQuery({
         queryFn: checkLogin,
         queryKey: ["user"],
-        retry: 0
+        retry: 0,
+        refetchInterval: 60 * 1000
     })
 
     const navigate = useNavigate();
 
     useEffect(() => {
         if (isError) {
+            Cookies.remove("token")
             navigate('/auth/login');
         }
     }, [isError, isLoading, navigate, isSuccess])

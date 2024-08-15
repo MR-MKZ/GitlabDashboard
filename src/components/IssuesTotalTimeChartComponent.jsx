@@ -84,7 +84,7 @@ export default function IssuesTotalTimeChartComponent() {
             className={"bg-gray-primary items-center lg:items-stretch border border-gray-borders rounded-lg p-5 gap-3 flex flex-col lg:flex-row lg:justify-between"}>
             <div className={"flex items-center lg:items-start flex-col w-full gap-6 text-[11pt] sm:text-[14pt]"}>
                 <h1 className={"text-2xl"}>Issues Total Time</h1>
-                {!issueListIsLoading && issueListIsError || data.labels.length === 0 ? (
+                {!issueListIsLoading && issueListIsError && !issueListData || data.labels.length === 0 ? (
                     <p className={"w-full h-[270px] flex items-center justify-center"}>
                         Sorry, but there is nothing to show yet!
                     </p>

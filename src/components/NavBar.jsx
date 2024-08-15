@@ -2,7 +2,7 @@ import {
     MdOutlineSpaceDashboard,
     MdOutlineLogout,
     MdOutlineSettings,
-    MdOutlineInsertChart,
+    // MdOutlineInsertChart,
 } from "react-icons/md";
 import { GoIssueOpened } from "react-icons/go";
 import { BiTask } from "react-icons/bi";
@@ -12,6 +12,7 @@ import { useLocation } from "react-router-dom";
 import { useState } from "react";
 import { motion } from "framer-motion";
 import React from "react";
+// import PropTypes from "prop-types"
 
 const CustomLink = React.lazy(() => import('./CustomLink'));
 
@@ -63,7 +64,7 @@ export default function NavBar() {
                             <CustomLink to={"/"} icon={<MdOutlineSpaceDashboard color={currentNavTab("/")} size={25} />} tooltipContent={"Dashboard"} tooltipPosition={"right"} />
                         </li>
                         <li>
-                            <CustomLink to={"/tasks"} icon={<BiTask color={currentNavTab("/tasks")} size={25} />} disabled={true} tooltipContent={"Tasks"} tooltipPosition={"right"} />
+                            <CustomLink to={"/tasks"} icon={<BiTask color={currentNavTab("/tasks")} size={25} />} disabled={false} tooltipContent={"Tasks"} tooltipPosition={"right"} />
                         </li>
                         <li>
                             <CustomLink to={"/issues"} icon={<GoIssueOpened color={currentNavTab("/issues")} size={25} />} disabled={true} tooltipContent={"Issues"} tooltipPosition={"right"} />
@@ -76,9 +77,9 @@ export default function NavBar() {
             </div>
             <hr className="mt-5 border-t-gray-borders border-t-2 hidden lg:block" />
             <div className="hidden lg:flex flex-col gap-2 mt-5">
-                <div>
+                {/* <div>
                     <CustomLink to={"/statistics"} icon={<MdOutlineInsertChart color={currentNavTab("/statistics")} size={25} />} disabled={true} tooltipContent={"Statistics"} tooltipPosition={"right"} />
-                </div>
+                </div> */}
                 <div>
                     <CustomLink to={"/settings"} icon={<MdOutlineSettings color={currentNavTab("/settings")} size={25} />} disabled={true} tooltipContent={"Settings"} tooltipPosition={"right"} />
                 </div>
@@ -122,7 +123,7 @@ export default function NavBar() {
                         variants={burgerItem}
                         className="w-full"
                     >
-                        <CustomLink to={"/tasks"} icon={<BiTask color={currentNavTab("/tasks")} size={25} />} disabled={true} text={"Tasks"} tooltipActive={false} />
+                        <CustomLink to={"/tasks"} icon={<BiTask color={currentNavTab("/tasks")} size={25} />} disabled={false} text={"Tasks"} tooltipActive={false} />
                     </motion.li>
                     <motion.li
                         variants={burgerItem}
@@ -136,12 +137,6 @@ export default function NavBar() {
                     >
                         <CustomLink to={"/auth/logout"} icon={<MdOutlineLogout color={currentNavTab("/auth/logout")} size={25} />} disabled={false} text={"Logout"} tooltipActive={false} />
                     </motion.li>
-                    {/* <motion.li
-                        variants={burgerItem}
-                        className="w-full"
-                    >
-                        <CustomLink to={"/schedule"} icon={<MdOutlineCalendarToday color={currentNavTab("/schedule")} size={25} />} disabled={true} text={"Schedule"} tooltipActive={false} />
-                    </motion.li> */}
                 </ul>
             </motion.div>
         </>

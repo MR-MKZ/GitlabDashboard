@@ -32,11 +32,6 @@ export default function LoginPage() {
         },
         validationSchema: LoginSchema,
         onSubmit: (values) => {
-            console.log({
-                email: values.email,
-                password: values.password
-            })
-
             login(values)
         }
     })

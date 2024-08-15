@@ -1,17 +1,16 @@
-import {createBrowserRouter, redirect, RouterProvider} from "react-router-dom";
+import { createBrowserRouter, redirect, RouterProvider } from "react-router-dom";
 import DashboardPage from "../pages/DashboardPage.jsx";
-import DashboardLayout from "../layouts/DashboardLayout";
 import PageNotFound from "../pages/errors/404";
 import Loading from "../components/Loading"
 import LoginPage from "../pages/auth/LoginPage.jsx";
 import RegisterPage from "../pages/auth/RegisterPage.jsx";
 import Cookies from "js-cookie";
-import {checkLogin} from "../api/index.js";
+import { checkLogin } from "../api/index.js";
+import TasksPage from "../pages/TasksPage.jsx";
 
 const router = createBrowserRouter([
     {
         path: "/",
-        element: <DashboardLayout/>,
         loader: () => {
             let token = Cookies.get("token")
             if (!token) {
@@ -22,7 +21,11 @@ const router = createBrowserRouter([
         children: [
             {
                 index: true,
-                element: <DashboardPage/>
+                element: <DashboardPage />
+            },
+            {
+                path: "tasks",
+                element: <TasksPage />
             }
         ]
     },
@@ -48,11 +51,11 @@ const router = createBrowserRouter([
             },
             {
                 path: "login",
-                element: <LoginPage/>
+                element: <LoginPage />
             },
             {
                 path: "signup",
-                element: <RegisterPage/>
+                element: <RegisterPage />
             },
             {
                 path: "logout",
@@ -65,13 +68,13 @@ const router = createBrowserRouter([
     },
     {
         path: "*",
-        element: <PageNotFound/>
+        element: <PageNotFound />
     }
 ])
 
 
 export default function AppRouter() {
     return (
-        <RouterProvider router={router} fallbackElement={<Loading/>}/>
+        <RouterProvider router={router} fallbackElement={<Loading />} />
     )
 }
