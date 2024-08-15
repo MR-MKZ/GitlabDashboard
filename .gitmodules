@@ -1,0 +1,3 @@
+[submodule "GitLab_Dashboard"]
+	path = GitLab_Dashboard
+	url = https://github.com/Amirali-Salari/GitLab_Dashboard.git
